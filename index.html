@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vũ Trụ Toán Học<!--  --></title>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== NỀN SAO ===== */
+
+#stars{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:moveStars linear infinite;
+}
+
+@keyframes moveStars{
+from{transform:translateY(0);}
+to{transform:translateY(-2000px);}
+}
+
+/* ===== THIÊN HÀ ===== */
+
+#galaxy{
+position:fixed;
+top:50%;
+left:50%;
+width:900px;
+height:900px;
+transform:translate(-50%,-50%);
+pointer-events:none;
+z-index:-2;
+}
+
+.arm{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:50%;
+background:black;
+animation:spin 120s linear infinite;
+opacity:0.25;
+}
+
+.arm:nth-child(2){
+transform:rotate(60deg);
+animation-duration:140s;
+}
+
+.arm:nth-child(3){
+transform:rotate(120deg);
+animation-duration:160s;
+}
+
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+/* ===== HEADER ===== */
+
+header{
+background:black;
+}
+
+
+
+/* ===== LAYOUT ===== */
+
+.container{
+display:flex;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar{
+width:300px;
+padding:20px;
+}
+
+.section{
+margin-bottom:20px;
+}
+
+.section h2{
+background:#1e40af;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.section h2:hover{
+background:#2563eb;
+}
+
+/* ===== MENU CHƯƠNG ===== */
+
+.chapters{
+display:none;
+margin-top:8px;
+}
+
+.chapters button{
+width:100%;
+padding:8px;
+margin-top:5px;
+border:none;
+background:#0ea5e9;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.chapters button:hover{
+background:#38bdf8;
+}
+
+/* ===== CONTENT ===== */
+
+.content{
+flex:1;
+padding:40px;
+}
+
+.card{
+background:transparent;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div id="galaxy">
+<div class="arm"></div>
+<div class="arm"></div>
+<div class="arm"></div>
+</div>
+
+<header>
+<h1>📚 Vũ Trụ Toán Học </h1>
+
+<div class="searchBox">
+<input 
+type="text"
+id="searchInput"
+placeholder="🔎 Tìm công thức..."
+onkeyup="searchFormula()">
+</div>
+</header>
+
+<div class="container">
+
+<div class="sidebar">
+
+<!-- TOÁN 10 -->
+
+<div class="section">
+
+<h2 onclick="toggle('t10')">📖 Toán 10</h2>
+
+<div class="chapters" id="t10">
+
+<button onclick="show('Toán 10 - Chương 1')">Chương 1</button>
+<button onclick="show('Toán 10 - Chương 2')">Chương 2</button>
+<button onclick="show('Toán 10 - Chương 3')">Chương 3</button>
+<button onclick="show('Toán 10 - Chương 4')">Chương 4</button>
+<button onclick="show('Toán 10 - Chương 5')">Chương 5</button>
+<button onclick="show('Toán 10 - Chương 6')">Chương 6</button>
+<button onclick="show('Toán 10 - Chương 7')">Chương 7</button>
+<button onclick="show('Toán 10 - Chương 8')">Chương 8</button>
+<button onclick="show('Toán 10 - Chương 9')">Chương 9</button>
+
+</div>
+
+</div>
+
+<!-- TOÁN 11 -->
+
+<div class="section">
+
+<h2 onclick="toggle('t11')">📖 Toán 11</h2>
+
+<div class="chapters" id="t11">
+
+<button onclick="show('Toán 11 - Chương 1')">Chương 1</button>
+<button onclick="show('Toán 11 - Chương 2')">Chương 2</button>
+<button onclick="show('Toán 11 - Chương 3')">Chương 3</button>
+<button onclick="show('Toán 11 - Chương 4')">Chương 4</button>
+<button onclick="show('Toán 11 - Chương 5')">Chương 5</button>
+<button onclick="show('Toán 11 - Chương 6')">Chương 6</button>
+<button onclick="show('Toán 11 - Chương 7')">Chương 7</button>
+<button onclick="show('Toán 11 - Chương 8')">Chương 8</button>
+<button onclick="show('Toán 11 - Chương 9')">Chương 9</button>
+
+</div>
+
+</div>
+
+<!-- TOÁN 12 -->
+
+<div class="section">
+
+<h2 onclick="toggle('t12')">📖 Toán 12</h2>
+
+<div class="chapters" id="t12">
+
+<button onclick="show('Toán 12 - Chương 1')">Chương 1</button>
+<button onclick="show('Toán 12 - Chương 2')">Chương 2</button>
+<button onclick="show('Toán 12 - Chương 3')">Chương 3</button>
+<button onclick="show('Toán 12 - Chương 4')">Chương 4</button>
+<button onclick="show('Toán 12 - Chương 5')">Chương 5</button>
+<button onclick="show('Toán 12 - Chương 6')">Chương 6</button>
+<button onclick="show('Toán 12 - Chương 7')">Chương 7</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="content" id="content">
+
+<div class="card">
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* ===== MỞ MENU ===== */
+
+function toggle(id){
+
+let box=document.getElementById(id);
+
+if(box.style.display==="block"){
+box.style.display="none";
+}else{
+box.style.display="block";
+}
+
+}
+
+/* ===== HIỂN THỊ NỘI DUNG ===== */
+
+function show(title){
+
+let html="";
+
+
+/* ================= CHƯƠNG 1 ================= */
+
+ if(title==="Toán 10 - Chương 1"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 1: Mệnh đề và Tập hợp</h2>
+
+<p>Chương này thiên về tư duy logic và ngôn ngữ ký hiệu.</p>
+
+<h3>Mệnh đề phủ định</h3>
+
+<p>Phủ định của mệnh đề \\(P\\) là \\(\\overline{P}\\).</p>
+
+<p>Phủ định của "với mọi" (∀) là "tồn tại" (∃) và ngược lại.</p>
+
+<h3>Các phép toán tập hợp</h3>
+
+<ul>
+
+<li>Giao:</li>
+
+\\[
+A \\cap B = \\{x \\in A \\; \\text{và} \\; x \\in B\\}
+\\]
+
+<li>Hợp:</li>
+
+\\[
+A \\cup B = \\{x \\in A \\; \\text{hoặc} \\; x \\in B\\}
+\\]
+
+<li>Hiệu:</li>
+
+\\[
+A \\setminus B = \\{x \\in A \\; \\text{và} \\; x \\notin B\\}
+\\]
+
+<li>Phần bù:</li>
+
+\\[
+C_A B
+\\]
+
+</ul>
+
+</div>
+
+`;
+
+}
+
+
+
+/* ================= CHƯƠNG 2 ================= */
+
+else if(title==="Toán 10 - Chương 2"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 2: Bất phương trình và hệ bất phương trình bậc nhất hai ẩn</h2>
+
+<p>Trọng tâm là biểu diễn miền nghiệm trên mặt phẳng tọa độ Oxy.</p>
+
+<ul>
+
+<li>Dạng tổng quát:</li>
+
+\\[
+ax + by < c
+\\]
+
+(hoặc ≤, >, ≥)
+
+</ul>
+
+<h3>Cách xác định miền nghiệm</h3>
+
+<ol>
+
+<li>Vẽ đường thẳng:</li>
+
+\\[
+d: ax + by = c
+\\]
+
+<li>Chọn điểm thử (thường là O(0,0)).</li>
+
+<li>Nếu thỏa mãn thì nửa mặt phẳng chứa điểm đó là miền nghiệm.</li>
+
+</ol>
+
+<h3>Ứng dụng</h3>
+
+<p>Bài toán tối ưu: giá trị lớn nhất / nhỏ nhất của</p>
+
+\\[
+F(x,y) = ax + by
+\\]
+
+<p>đạt tại các đỉnh của đa giác miền nghiệm.</p>
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 10 - Chương 3"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 3: Hệ thức lượng trong tam giác</h2>
+
+<h3>1. Định lý Cosin</h3>
+
+\\[
+a^2=b^2+c^2-2bc\\cos A
+\\]
+
+<h3>2. Định lý Sin</h3>
+
+\\[
+\\frac{a}{\\sin A}=
+\\frac{b}{\\sin B}=
+\\frac{c}{\\sin C}=2R
+\\]
+
+<p>R là bán kính đường tròn ngoại tiếp.</p>
+
+<h3>3. Công thức diện tích tam giác</h3>
+
+<ul>
+
+<li>\\(S=\\frac12 ah\\)</li>
+
+<li>\\(S=\\frac12 bc\\sin A\\)</li>
+
+<li>\\(S=\\frac{abc}{4R}\\)</li>
+
+<li>\\(S=pr\\)</li>
+
+<li>Heron:</li>
+
+\\[
+S=\\sqrt{p(p-a)(p-b)(p-c)}
+\\]
+
+</ul>
+
+<hr>
+
+<h3>4. Giá trị lượng giác của góc</h3>
+
+<ul>
+
+<li>\\(\\sin(180°-\\alpha)=\\sin\\alpha\\)</li>
+
+<li>\\(\\cos(180°-\\alpha)=-\\cos\\alpha\\)</li>
+
+<li>\\(\\tan(180°-\\alpha)=-\\tan\\alpha\\)</li>
+
+</ul>
+
+<h3>5. Hệ thức lượng giác cơ bản</h3>
+
+\\[
+\\sin^2\\alpha+\\cos^2\\alpha=1
+\\]
+
+\\[
+1+\\tan^2\\alpha=\\frac1{\\cos^2\\alpha}
+\\]
+
+\\[
+1+\\cot^2\\alpha=\\frac1{\\sin^2\\alpha}
+\\]
+
+</div>
+
+`;
+
+}
+/* ================= CHƯƠNG 4 ================= */
+
+else if(title==="Toán 10 - Chương 4"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 4: Vecto</h2>
+
+<h3>1. Các quy tắc cơ bản</h3>
+
+<ul>
+
+<li>\\(\\vec{AB}+\\vec{BC}=\\vec{AC}\\)</li>
+
+<li>\\(\\vec{OB}-\\vec{OA}=\\vec{AB}\\)</li>
+
+<li>\\(\\vec{AB}+\\vec{AD}=\\vec{AC}\\)</li>
+
+</ul>
+
+<h3>2. Trung điểm và trọng tâm</h3>
+
+<ul>
+
+<li>\\(MA+MB=0\\)</li>
+
+<li>\\(GA+GB+GC=0\\)</li>
+
+</ul>
+
+<h3>3. Tích vô hướng</h3>
+
+\\[
+a\\cdot b=|a||b|\\cos(a,b)
+\\]
+
+<p>Nếu \\(a ⟂ b\\) thì</p>
+
+\\[
+a\\cdot b=0
+\\]
+
+<hr>
+
+<h3>4. Biểu thức tọa độ của vecto</h3>
+
+<p>Cho \\(a=(a_1,a_2)\\), \\(b=(b_1,b_2)\\)</p>
+
+<ul>
+
+<li>\\(a+b=(a_1+b_1,a_2+b_2)\\)</li>
+
+<li>\\(ka=(ka_1,ka_2)\\)</li>
+
+<li>\\(a\\cdot b=a_1b_1+a_2b_2\\)</li>
+
+<li>\\(|a|=\\sqrt{a_1^2+a_2^2}\\)</li>
+
+</ul>
+
+<h3>Khoảng cách hai điểm</h3>
+
+\\[
+AB=\\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 10 - Chương 5"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 5: Các số đặc trưng của mẫu số liệu không ghép nhóm</h2>
+
+<p>Chương này giúp phân tích và mô tả dữ liệu.</p>
+
+<h3>Số trung bình</h3>
+
+\\[
+\\bar{x}=\\frac{x_1+x_2+...+x_n}{n}
+\\]
+
+<h3>Trung vị (Me)</h3>
+
+<p>Là số đứng giữa của dãy sau khi sắp xếp tăng dần.</p>
+
+<h3>Tứ phân vị</h3>
+
+<ul>
+<li>\\(Q_1\\): trung vị nửa bên trái</li>
+<li>\\(Q_2\\): trung vị</li>
+<li>\\(Q_3\\): trung vị nửa bên phải</li>
+</ul>
+
+<h3>Phương sai</h3>
+
+\\[
+s^2=\\frac{1}{n}\\sum(x_i-\\bar{x})^2
+\\]
+
+<h3>Độ lệch chuẩn</h3>
+
+\\[
+\\sigma=\\sqrt{s^2}
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 10 - Chương 6"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 6: Hàm số, đồ thị và ứng dụng</h2>
+
+<h3>Hàm số bậc hai</h3>
+
+\\[
+y=ax^2+bx+c \\quad (a\\ne0)
+\\]
+
+<h3>Tọa độ đỉnh</h3>
+
+\\[
+I\\left(-\\frac{b}{2a},-\\frac{\\Delta}{4a}\\right)
+\\]
+
+<h3>Trục đối xứng</h3>
+
+\\[
+x=-\\frac{b}{2a}
+\\]
+
+<h3>Bề lõm</h3>
+
+<ul>
+<li>a > 0 : Parabol mở lên</li>
+<li>a < 0 : Parabol mở xuống</li>
+</ul>
+
+<h3>Biệt thức</h3>
+
+\\[
+\\Delta=b^2-4ac
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 10 - Chương 7"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 7: Phương trình và bất phương trình bậc hai</h2>
+
+<h3>Phương trình bậc hai</h3>
+
+\\[
+ax^2+bx+c=0
+\\]
+
+<h3>Công thức nghiệm</h3>
+
+\\[
+x_{1,2}=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}
+\\]
+
+<h3>Xét dấu tam thức bậc hai</h3>
+
+<ul>
+
+<li>\\(\\Delta<0\\) : cùng dấu với a</li>
+
+<li>\\(\\Delta=0\\) : có nghiệm kép</li>
+
+<li>\\(\\Delta>0\\) : quy tắc "Trong trái ngoài cùng"</li>
+
+</ul>
+
+<h3>Phương trình quy về bậc hai</h3>
+
+<ul>
+
+<li>\\(\\sqrt{f(x)}=g(x)\\)</li>
+
+<li>\\(\\sqrt{f(x)}=\\sqrt{g(x)}\\)</li>
+
+</ul>
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 10 - Chương 9"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 9: Phương pháp tọa độ trong mặt phẳng</h2>
+
+<h3>1. Phương trình đường thẳng</h3>
+
+<p>PT tổng quát:</p>
+
+\\[
+ax+by+c=0
+\\]
+
+<p>Khoảng cách từ điểm đến đường thẳng:</p>
+
+\\[
+d=\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}
+\\]
+
+<h3>Vị trí hai đường thẳng</h3>
+
+<ul>
+
+<li>Cắt nhau</li>
+
+\\[
+\\frac{a_1}{a_2} \\ne \\frac{b_1}{b_2}
+\\]
+
+<li>Song song</li>
+
+\\[
+\\frac{a_1}{a_2}=\\frac{b_1}{b_2}\\ne\\frac{c_1}{c_2}
+\\]
+
+<li>Trùng nhau</li>
+
+\\[
+\\frac{a_1}{a_2}=\\frac{b_1}{b_2}=\\frac{c_1}{c_2}
+\\]
+
+<li>Vuông góc</li>
+
+\\[
+a_1a_2+b_1b_2=0
+\\]
+
+</ul>
+
+<h3>Góc giữa hai đường thẳng</h3>
+
+\\[
+cos\\theta=\\frac{|a_1a_2+b_1b_2|}{\\sqrt{a_1^2+b_1^2}\\sqrt{a_2^2+b_2^2}}
+\\]
+
+<hr>
+
+<h3>2. Đường tròn</h3>
+
+<p>Phương trình chính tắc:</p>
+
+\\[
+(x-a)^2+(y-b)^2=R^2
+\\]
+
+<h3>Phương trình tổng quát</h3>
+
+\\[
+x^2+y^2-2ax-2by+c=0
+\\]
+
+<h3>Tiếp tuyến đường tròn</h3>
+
+\\[
+(x_0-a)(x-x_0)+(y_0-b)(y-y_0)=0
+\\]
+
+<hr>
+
+<h3>3. Các đường conic</h3>
+
+<h4>Elip</h4>
+
+\\[
+\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1
+\\]
+
+<h4>Hyperbol</h4>
+
+\\[
+\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1
+\\]
+
+<h4>Parabol</h4>
+
+\\[
+y^2=2px
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 10 - Chương 9"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 9: Phương pháp tọa độ trong mặt phẳng</h2>
+
+<h3>1. Phương trình đường thẳng</h3>
+
+<p>PT tổng quát:</p>
+
+\\[
+ax+by+c=0
+\\]
+
+<p>Khoảng cách từ điểm đến đường thẳng:</p>
+
+\\[
+d=\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}
+\\]
+
+<h3>Vị trí hai đường thẳng</h3>
+
+<ul>
+
+<li>Cắt nhau</li>
+
+\\[
+\\frac{a_1}{a_2} \\ne \\frac{b_1}{b_2}
+\\]
+
+<li>Song song</li>
+
+\\[
+\\frac{a_1}{a_2}=\\frac{b_1}{b_2}\\ne\\frac{c_1}{c_2}
+\\]
+
+<li>Trùng nhau</li>
+
+\\[
+\\frac{a_1}{a_2}=\\frac{b_1}{b_2}=\\frac{c_1}{c_2}
+\\]
+
+<li>Vuông góc</li>
+
+\\[
+a_1a_2+b_1b_2=0
+\\]
+
+</ul>
+
+<h3>Góc giữa hai đường thẳng</h3>
+
+\\[
+cos\\theta=\\frac{|a_1a_2+b_1b_2|}{\\sqrt{a_1^2+b_1^2}\\sqrt{a_2^2+b_2^2}}
+\\]
+
+<hr>
+
+<h3>2. Đường tròn</h3>
+
+<p>Phương trình chính tắc:</p>
+
+\\[
+(x-a)^2+(y-b)^2=R^2
+\\]
+
+<h3>Phương trình tổng quát</h3>
+
+\\[
+x^2+y^2-2ax-2by+c=0
+\\]
+
+<h3>Tiếp tuyến đường tròn</h3>
+
+\\[
+(x_0-a)(x-x_0)+(y_0-b)(y-y_0)=0
+\\]
+
+<hr>
+
+<h3>3. Các đường conic</h3>
+
+<h4>Elip</h4>
+
+\\[
+\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1
+\\]
+
+<h4>Hyperbol</h4>
+
+\\[
+\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1
+\\]
+
+<h4>Parabol</h4>
+
+\\[
+y^2=2px
+\\]
+
+</div>
+
+`;
+
+}
+else if(title==="Toán 11 - Chương 1"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 1: Lượng giác</h2>
+
+<h3>1. Công thức biến đổi lượng giác</h3>
+
+<h4>Công thức cộng</h4>
+
+\\[
+\\sin(a+b)=\\sin a\\cos b + \\cos a\\sin b
+\\]
+
+\\[
+\\cos(a+b)=\\cos a\\cos b - \\sin a\\sin b
+\\]
+
+\\[
+\\tan(a+b)=\\frac{\\tan a + \\tan b}{1-\\tan a\\tan b}
+\\]
+
+\\[
+\\cot(a+b)=\\frac{\\cot a\\cot b -1}{\\cot a + \\cot b}
+\\]
+
+<h4>Công thức nhân đôi</h4>
+
+\\[
+\\sin2a=2\\sin a\\cos a
+\\]
+
+\\[
+\\cos2a=\\cos^2 a - \\sin^2 a
+\\]
+
+\\[
+\\tan2a=\\frac{2\\tan a}{1-\\tan^2 a}
+\\]
+
+<h4>Biến đổi tích thành tổng</h4>
+
+\\[
+\\cos a\\cos b=\\frac{1}{2}[\\cos(a-b)+\\cos(a+b)]
+\\]
+
+\\[
+\\sin a\\sin b=\\frac{1}{2}[\\cos(a-b)-\\cos(a+b)]
+\\]
+
+<h4>Biến đổi tổng thành tích</h4>
+
+\\[
+\\cos u + \\cos v =2\\cos\\frac{u+v}{2}\\cos\\frac{u-v}{2}
+\\]
+
+\\[
+\\sin u + \\sin v =2\\sin\\frac{u+v}{2}\\cos\\frac{u-v}{2}
+\\]
+
+<h3>2. Phương trình lượng giác</h3>
+
+\\[
+\\sin x = \\sin a \\Leftrightarrow 
+\\begin{cases}
+x=a+k2\\pi \\\\
+x=\\pi-a+k2\\pi
+\\end{cases}
+\\]
+
+\\[
+\\cos x = \\cos a \\Leftrightarrow x=\\pm a+k2\\pi
+\\]
+
+\\[
+\\tan x = \\tan a \\Leftrightarrow x=a+k\\pi
+\\]
+
+<h3>3. Hệ thức cơ bản</h3>
+
+\\[
+\\sin^2x+\\cos^2x=1
+\\]
+
+\\[
+1+\\tan^2x=\\frac{1}{\\cos^2x}
+\\]
+
+\\[
+1+\\cot^2x=\\frac{1}{\\sin^2x}
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 11 - Chương 2"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 2: Dãy số – Cấp số cộng – Cấp số nhân</h2>
+
+<h3>Cấp số cộng</h3>
+
+\\[
+u_n=u_{n-1}+d
+\\]
+
+\\[
+u_n=u_1+(n-1)d
+\\]
+
+\\[
+S_n=\\frac{n(u_1+u_n)}{2}
+\\]
+
+<h3>Cấp số nhân</h3>
+
+\\[
+u_n=u_1q^{n-1}
+\\]
+
+\\[
+S_n=u_1\\frac{1-q^n}{1-q}
+\\]
+
+</div>
+
+`;
+}
+
+
+
+
+else if(title==="Toán 11 - Chương 2"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 2: Dãy số – Cấp số cộng – Cấp số nhân</h2>
+
+<h3>Cấp số cộng</h3>
+
+\\[
+u_n=u_{n-1}+d
+\\]
+
+\\[
+u_n=u_1+(n-1)d
+\\]
+
+\\[
+S_n=\\frac{n(u_1+u_n)}{2}
+\\]
+
+<h3>Cấp số nhân</h3>
+
+\\[
+u_n=u_1q^{n-1}
+\\]
+
+\\[
+S_n=u_1\\frac{1-q^n}{1-q}
+\\]
+
+</div>
+
+`;
+}
+
+
+
+else if(title==="Toán 11 - Chương 3"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 3: Các số đặc trưng của mẫu số liệu ghép nhóm</h2>
+
+<h3>Giá trị đại diện</h3>
+
+\\[
+x_i=\\frac{a_i+a_{i+1}}{2}
+\\]
+
+<p>(Trung điểm của lớp)</p>
+
+<h3>Số trung bình</h3>
+
+\\[
+\\bar{x}=\\frac{1}{n}\\sum f_i x_i
+\\]
+
+<h3>Trung vị</h3>
+
+\\[
+M_e=L+\\frac{\\frac{n}{2}-c_{f_{k-1}}}{f_k}\\cdot w
+\\]
+
+<ul>
+<li>L: đầu mút trái của lớp chứa trung vị</li>
+<li>\\(c_{f_{k-1}}\\): tần số tích lũy trước</li>
+<li>\\(f_k\\): tần số lớp trung vị</li>
+<li>w: độ rộng lớp</li>
+</ul>
+
+<h3>Mốt</h3>
+
+\\[
+M_o=L+\\frac{f_k-f_{k-1}}{2f_k-f_{k-1}-f_{k+1}}\\cdot w
+\\]
+
+<h3>Khoảng tứ phân vị</h3>
+
+\\[
+\\Delta Q=Q_3-Q_1
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 11 - Chương 6"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 6: Hàm mũ và Logarit</h2>
+
+<h3>1. Công thức lũy thừa</h3>
+
+<p>Cho số thực a > 0, a ≠ 1 và các số thực m, n.</p>
+
+<ul>
+
+<li>\\(a^m \\cdot a^n = a^{m+n}\\)</li>
+
+<li>\\(\\frac{a^m}{a^n}=a^{m-n}\\)</li>
+
+<li>\\((a^m)^n=a^{mn}\\)</li>
+
+<li>\\((ab)^n=a^n b^n\\)</li>
+
+<li>\\(a^{-n}=\\frac{1}{a^n}\\)</li>
+
+<li>\\(a^{\\frac{m}{n}}=\\sqrt[n]{a^m}\\)</li>
+
+</ul>
+
+<h3>Hàm số mũ</h3>
+
+\\[
+y=a^x
+\\]
+
+<ul>
+
+<li>Tập xác định: \\(D=\\mathbb{R}\\)</li>
+
+<li>Tập giá trị: \\((0;+∞)\\)</li>
+
+<li>Đồng biến khi \\(a>1\\), nghịch biến khi \\(0<a<1\\)</li>
+
+</ul>
+
+<hr>
+
+<h3>2. Công thức Logarit</h3>
+
+<ul>
+
+<li>\\(\\log_a 1 = 0\\)</li>
+
+<li>\\(\\log_a a = 1\\)</li>
+
+<li>\\(\\log_a (a^x) = x\\)</li>
+
+<li>\\(a^{\\log_a b}=b\\)</li>
+
+</ul>
+
+<h3>Tính chất logarit</h3>
+
+<ul>
+
+<li>\\(\\log_a(bc)=\\log_a b + \\log_a c\\)</li>
+
+<li>\\(\\log_a \\left(\\frac{b}{c}\\right)=\\log_a b - \\log_a c\\)</li>
+
+<li>\\(\\log_a(b^m)=m\\log_a b\\)</li>
+
+<li>\\(\\log_a \\sqrt[n]{b}=\\frac{1}{n}\\log_a b\\)</li>
+
+</ul>
+
+<h3>Công thức đổi cơ số</h3>
+
+\\[
+\\log_a b = \\frac{\\log_c b}{\\log_c a}
+\\]
+
+<h3>Logarit đặc biệt</h3>
+
+<ul>
+
+<li>\\(\\log_{10} b = \\lg b\\)</li>
+
+<li>\\(\\log_e b = \\ln b\\)</li>
+
+</ul>
+
+<hr>
+
+<h3>3. Phương trình mũ và logarit</h3>
+
+<p><b>Phương trình mũ:</b></p>
+
+\\[
+a^x=b
+\\]
+
+<ul>
+<li>Nếu \\(b>0\\): \\(x=\\log_a b\\)</li>
+<li>Nếu \\(b\\le0\\): phương trình vô nghiệm</li>
+</ul>
+
+<p><b>Phương trình logarit:</b></p>
+
+\\[
+\\log_a x=b
+\\]
+
+<ul>
+<li>Nghiệm: \\(x=a^b\\)</li>
+</ul>
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 11 - Chương 4"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 4: Quan hệ song song</h2>
+
+<h3>Đường song song mặt phẳng</h3>
+
+\\[
+d ⊂ (P), d' ∉ (P) ⇒ d' ∥ (P)
+\\]
+
+<h3>Hai mặt phẳng song song</h3>
+
+\\[
+(P) ∥ (Q)
+\\]
+
+<p>Nếu hai đường thẳng cắt nhau trong (P) song song với (Q)</p>
+
+<h3>Định lý Thales trong không gian</h3>
+
+<p>Ba mặt phẳng song song cắt hai đường thẳng thì tạo ra các đoạn tương ứng tỉ lệ.</p>
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 11 - Chương 5"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 5: Giới hạn và Hàm số liên tục</h2>
+
+<h3>Các giới hạn đặc biệt</h3>
+
+\\[
+\\lim_{x→0}\\frac{\\sin x}{x}=1
+\\]
+
+\\[
+\\lim_{x→0}\\frac{e^x-1}{x}=1
+\\]
+
+\\[
+\\lim_{x→0}\\frac{\\ln(1+x)}{x}=1
+\\]
+
+<h3>Hàm số liên tục</h3>
+
+<p>Hàm số f(x) liên tục tại \\(x_0\\) khi:</p>
+
+\\[
+\\lim_{x→x_0}f(x)=f(x_0)
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 11 - Chương 7"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 7: Quan hệ vuông góc</h2>
+
+<h3>Đường ⟂ mặt</h3>
+
+<p>\\(d ⟂ (P)\\) nếu d vuông góc với 2 đường cắt nhau trong (P)</p>
+
+<h3>Định lý 3 đường vuông góc</h3>
+
+<p>Cho a ⟂ (P), b ⊂ (P)</p>
+
+<p>b' là hình chiếu của b lên (P)</p>
+
+\\[
+a ⟂ b \\iff b' ⟂ a
+\\]
+
+<h3>Khoảng cách</h3>
+
+\\[
+d(A,(P))=AH
+\\]
+
+<p>H là hình chiếu của A lên (P)</p>
+
+<h3>Góc</h3>
+
+<ul>
+
+<li>Góc giữa đường thẳng và mặt phẳng</li>
+
+<li>Góc giữa hai mặt phẳng</li>
+
+</ul>
+
+</div>
+
+`;
+
+}
+else if(title==="Toán 10 - Chương 8"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 8: Đại số tổ hợp</h2>
+
+<h3>Quy tắc cộng</h3>
+
+<p>Các phương án độc lập thì cộng.</p>
+
+<h3>Quy tắc nhân</h3>
+
+<p>Các bước liên tiếp thì nhân.</p>
+
+<h3>Hoán vị</h3>
+
+\\[
+P_n=n!
+\\]
+
+<h3>Chỉnh hợp</h3>
+
+\\[
+A_n^k=\\frac{n!}{(n-k)!}
+\\]
+
+<h3>Tổ hợp</h3>
+
+\\[
+C_n^k=\\frac{n!}{k!(n-k)!}
+\\]
+
+<hr>
+
+<h3>Nhị thức Newton</h3>
+
+\\[
+(a+b)^n=\\sum C_n^k a^{n-k}b^k
+\\]
+
+<h3>Khai triển thường gặp</h3>
+
+\\[
+(a+b)^4=a^4+4a^3b+6a^2b^2+4ab^3+b^4
+\\]
+
+\\[
+(a+b)^5=a^5+5a^4b+10a^3b^2+10a^2b^3+5ab^4+b^5
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 11 - Chương 9"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 9: Xác suất có điều kiện</h2>
+
+<h3>Xác suất có điều kiện</h3>
+
+\\[
+P(A|B)=\\frac{P(A∩B)}{P(B)}
+\\]
+
+<h3>Quy tắc nhân</h3>
+
+\\[
+P(A∩B)=P(B)P(A|B)
+\\]
+
+\\[
+P(A∩B)=P(A)P(B|A)
+\\]
+
+<h3>Biến cố độc lập</h3>
+
+\\[
+P(A∩B)=P(A)P(B)
+\\]
+
+</div>
+
+`;
+
+}
+
+
+
+else if(title==="Toán 11 - Chương 8"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 8: Đạo hàm</h2>
+
+<h3>1. Quy tắc tính đạo hàm</h3>
+
+<p>Cho u, v là các hàm số và k là hằng số:</p>
+
+<ul>
+
+<li>\\((u+v)' = u' + v'\\)</li>
+
+<li>\\((ku)' = ku'\\)</li>
+
+<li>\\((uv)' = u'v + uv'\\)</li>
+
+<li>\\(\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2} \\quad (v ≠ 0)\\)</li>
+
+<li>\\((1/v)' = -\\frac{v'}{v^2}\\)</li>
+
+</ul>
+
+<h3>2. Bảng đạo hàm cơ bản</h3>
+
+<ul>
+
+<li>\\((x^n)' = nx^{n-1}\\)</li>
+
+<li>\\((\\sqrt{x})' = \\frac{1}{2\\sqrt{x}}\\)</li>
+
+<li>\\((\\sin x)' = \\cos x\\)</li>
+
+<li>\\((\\cos x)' = -\\sin x\\)</li>
+
+<li>\\((\\tan x)' = \\frac{1}{\\cos^2 x}\\)</li>
+
+<li>\\((e^x)' = e^x\\)</li>
+
+<li>\\((a^x)' = a^x \\ln a\\)</li>
+
+<li>\\((\\ln x)' = \\frac{1}{x}\\)</li>
+
+<li>\\((\\log_a x)' = \\frac{1}{x\\ln a}\\)</li>
+
+</ul>
+
+<h3>3. Đạo hàm hàm hợp</h3>
+
+<p>Nếu \\(y = f(u)\\) và \\(u = g(x)\\)</p>
+
+\\[
+y' = f'(u) \\cdot u'
+\\]
+
+<h3>4. Đạo hàm cấp cao</h3>
+
+<p>Đạo hàm cấp 2 là đạo hàm của đạo hàm cấp 1:</p>
+
+\\[
+y'' = (y')'
+\\]
+
+<p><b>Ý nghĩa vật lý:</b></p>
+
+<ul>
+
+<li>Nếu \\(s(t)\\) là quãng đường</li>
+
+<li>Vận tốc: \\(v(t) = s'(t)\\)</li>
+
+<li>Gia tốc: \\(a(t) = v'(t) = s''(t)\\)</li>
+
+</ul>
+
+<h3>5. Tiếp tuyến của đồ thị</h3>
+
+<p>Phương trình tiếp tuyến của đồ thị \\(y=f(x)\\) tại điểm \\(M(x_0,y_0)\\)</p>
+
+\\[
+y = f'(x_0)(x-x_0) + y_0
+\\]
+
+<p><b>Lưu ý:</b> \\(f'(x_0)\\) là hệ số góc của tiếp tuyến.</p>
+
+</div>
+
+`;
+
+}
+
+
+
+/* ================= TOÁN 12 - CHƯƠNG 1 ================= */
+
+else if(title==="Toán 12 - Chương 1"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 1: Ứng dụng đạo hàm để khảo sát hàm số</h2>
+
+<ul>
+
+<li><b>Cực trị:</b> 
+x₀ là điểm cực đại nếu \\(f'(x₀)=0\\) và \\(f'(x)\\) đổi dấu từ dương sang âm qua x₀.
+</li>
+
+<li><b>Giá trị lớn nhất – nhỏ nhất:</b></li>
+
+<p>Tìm nghiệm \\(x_i\\) của</p>
+
+\\[
+f'(x)=0
+\\]
+
+<p>thuộc khoảng \\((a,b)\\) rồi so sánh</p>
+
+\\[
+f(a), f(b), f(x_i)
+\\]
+
+<li><b>Tiệm cận:</b></li>
+
+<ul>
+
+<li>Ngang:</li>
+
+\\[
+y=y_0 \quad nếu \quad \lim_{x→±∞}f(x)=y_0
+\\]
+
+<li>Đứng:</li>
+
+\\[
+x=x_0 \quad nếu \quad \lim_{x→x_0}f(x)=±∞
+\\]
+
+<li>Xiên:</li>
+
+\\[
+y=ax+b
+\\]
+
+\\[
+a=\lim_{x→∞}\frac{f(x)}{x}
+\\]
+
+\\[
+b=\lim_{x→∞}[f(x)-ax]
+\\]
+
+</ul>
+
+<li><b>Tâm đối xứng:</b>
+
+<p>Đồ thị hàm bậc ba nhận điểm uốn làm tâm đối xứng.</p>
+
+</li>
+
+</ul>
+
+</div>
+
+`;
+
+}
+
+/* ================= TOÁN 12 - CHƯƠNG 2 ================= */
+
+else if(title==="Toán 12 - Chương 2"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 2: Vectơ trong không gian</h2>
+
+<p>Cho</p>
+
+\\[
+a=(a_1,a_2,a_3),\quad b=(b_1,b_2,b_3)
+\\]
+
+<h3>Độ dài vectơ</h3>
+
+\\[
+|a|=\\sqrt{a_1^2+a_2^2+a_3^2}
+\\]
+
+<h3>Tích vô hướng</h3>
+
+\\[
+a\\cdot b=a_1b_1+a_2b_2+a_3b_3
+\\]
+
+<h3>Góc giữa hai vectơ</h3>
+
+\\[
+\\cos(a,b)=\\frac{a\\cdot b}{|a||b|}
+\\]
+
+</div>
+
+`;
+
+}
+
+/* ================= TOÁN 12 - CHƯƠNG 3 ================= */
+
+else if(title==="Toán 12 - Chương 3"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 3: Số đặc trưng đo mức độ phân tán</h2>
+
+<ul>
+
+<li>Khoảng biến thiên</li>
+
+\\[
+R=a_k-a_1
+\\]
+
+<li>Khoảng tứ phân vị</li>
+
+\\[
+\\Delta Q=Q_3-Q_1
+\\]
+
+<li>Phương sai</li>
+
+\\[
+s^2=\\frac{1}{n}\\sum f_i(x_i-\\bar{x})^2
+\\]
+
+<li>Độ lệch chuẩn</li>
+
+\\[
+s=\\sqrt{s^2}
+\\]
+
+</ul>
+
+</div>
+
+`;
+
+}
+
+/* ================= TOÁN 12 - CHƯƠNG 4 ================= */
+
+else if(title==="Toán 12 - Chương 4"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 4: Nguyên hàm và Tích phân</h2>
+
+<h3>Bảng nguyên hàm cơ bản</h3>
+
+\\[
+\\int x^n dx=\\frac{x^{n+1}}{n+1}+C
+\\]
+
+\\[
+\\int \\frac{1}{x}dx=\\ln|x|+C
+\\]
+
+\\[
+\\int sinx dx=-cosx+C
+\\]
+
+\\[
+\\int cosx dx=sinx+C
+\\]
+
+\\[
+\\int e^x dx=e^x+C
+\\]
+
+\\[
+\\int a^x dx=\\frac{a^x}{\\ln a}+C
+\\]
+
+<h3>Ứng dụng tích phân</h3>
+
+<p>Diện tích hình phẳng</p>
+
+\\[
+S=\\int_a^b |f(x)-g(x)|dx
+\\]
+
+<p>Thể tích vật thể tròn xoay</p>
+
+\\[
+V=\\pi\\int_a^b f^2(x)dx
+\\]
+
+</div>
+
+`;
+
+}
+
+/* ================= TOÁN 12 - CHƯƠNG 5 ================= */
+
+else if(title==="Toán 12 - Chương 5"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 5: Phương pháp tọa độ trong không gian</h2>
+
+<h3>Mặt phẳng</h3>
+
+\\[
+A(x-x_0)+B(y-y_0)+C(z-z_0)=0
+\\]
+
+<p>VTPT: n=(A,B,C)</p>
+
+<h3>Đường thẳng tham số</h3>
+
+\\[
+x=x_0+a_1t
+\\]
+
+\\[
+y=y_0+a_2t
+\\]
+
+\\[
+z=z_0+a_3t
+\\]
+
+<h3>Mặt cầu</h3>
+
+\\[
+(x-a)^2+(y-b)^2+(z-c)^2=R^2
+\\]
+
+<h3>Khoảng cách từ điểm đến mặt phẳng</h3>
+
+\\[
+d=\\frac{|Ax+By+Cz+D|}{\\sqrt{A^2+B^2+C^2}}
+\\]
+
+</div>
+
+`;
+
+}
+
+/* ================= TOÁN 12 - CHƯƠNG 6 ================= */
+
+else if(title==="Toán 12 - Chương 6"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 6: Xác suất có điều kiện</h2>
+
+<h3>Công thức xác suất toàn phần</h3>
+
+\\[
+P(B)=P(A)P(B|A)+P(\\bar A)P(B|\\bar A)
+\\]
+
+<h3>Công thức Bayes</h3>
+
+\\[
+P(A|B)=\\frac{P(A)P(B|A)}{P(B)}
+\\]
+
+</div>
+
+`;
+
+}
+
+/* ================= TOÁN 12 - CHƯƠNG 7 ================= */
+
+else if(title==="Toán 12 - Chương 7"){
+
+html=`
+
+<div class="card">
+
+<h2>Chương 7: Biến ngẫu nhiên rời rạc</h2>
+
+<h3>Kỳ vọng</h3>
+
+\\[
+E(X)=\\sum x_ip_i
+\\]
+
+<h3>Phương sai</h3>
+
+\\[
+V(X)=E(X^2)-[E(X)]^2
+\\]
+
+<h3>Phân bố nhị thức</h3>
+
+\\[
+P(X=k)=C_n^k p^k(1-p)^{n-k}
+\\]
+
+\\[
+E(X)=np
+\\]
+
+\\[
+V(X)=np(1-p)
+\\]
+
+</div>
+
+`;
+
+}
+/* ================= CHƯA CÓ ================= */
+
+else{
+
+html=`
+
+<div class="card">
+
+<h2>${title}</h2>
+
+<p>📌 Chưa có công thức.</p>
+
+</div>
+
+`;
+
+}
+
+
+
+
+document.getElementById("content").innerHTML=html;
+
+MathJax.typeset();
+
+}
+
+/* ===== TẠO SAO ===== */
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<800;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*2000+"px";
+star.style.animationDuration=(20+Math.random()*40)+"s";
+
+stars.appendChild(star);
+
+}
+
+</script>
+
+<div class="stars"></div>
+
+<div class="meteor-container"></div>
+
+<div class="spaceship">🚀</div>
+
+<div class="space-bg">
+  <div class="galaxy"></div>
+  <div class="moon"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
